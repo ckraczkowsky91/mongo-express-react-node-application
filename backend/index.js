@@ -22,7 +22,7 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 
 // execute imported cors function
-app.user(cors());
+app.use(cors());
 
 // make our routes available to the application
 routes(app);

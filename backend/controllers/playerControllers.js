@@ -22,11 +22,34 @@ export const addNewPlayer = (req, res) => {
 // create a GET method to retrieve data from the database
 export const getPlayers = (req, res) => {
   // use Mongo's find method to display all of the data in the collection
-  // we could add parameters to the find method in the curly braces
+  // we could add a filter to the find method in the curly braces
   Player.find({}, (err, Player) => {
     if (err) {
       res.send(err);
     }
     res.json(Player);
+  });
+};
+
+// create a GET method to retrieve data from the database for a particular entity
+export const getPlayer = (req, res) => {
+  Player.findById(req.params.PlayerId, (err, Player) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(Player);
+  });
+};
+
+// create a PUT method to update the data of a single entity
+export const updatePlayer = (req, res) => {
+  // the body of the request will contain the data to update so we need to pass it via req.body
+  // add {new: true} parameter so the response contains the updated entity and not the old entity
+  Player.findOneAndUpdate({ _id: req.params.PlayerId }, req.body, {new: true}, (err, Player) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(Player);
+    };
   });
 };
