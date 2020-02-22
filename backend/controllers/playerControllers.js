@@ -53,3 +53,15 @@ export const updatePlayer = (req, res) => {
     };
   });
 };
+
+//create a DELETE method to delete a single entity
+export const deletePlayer = (req, res) => {
+  // Mongoose provides a deleteOne method to delete a single entity using a filter
+  Player.deleteOne({ _id: req.params.PlayerId }, (err, Player) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(Player);
+    };
+  });
+};

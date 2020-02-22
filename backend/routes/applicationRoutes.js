@@ -1,4 +1,4 @@
-import { addNewPlayer, getPlayers, getPlayer, updatePlayer } from '../controllers/playerControllers';
+import { addNewPlayer, getPlayers, getPlayer, updatePlayer, deletePlayer } from '../controllers/playerControllers';
 
 // the controller needs to be connected to the route so that when the route is called from the request it executes the controller
 const routes = (app) => {
@@ -16,7 +16,9 @@ const routes = (app) => {
   // create a GET request that will execute the getPlayer function from the controllers
     .get(getPlayer)
   // create a PUT request that will execute the updatePlayer function from the controllers
-    .put(updatePlayer);
+    .put(updatePlayer)
+  // create a DELETE request that will execute the deletePlayer function from the controllers
+    .delete(deletePlayer);
 };
 
 export default routes;
