@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyparser from 'body-parser';
+import cors from 'cors';
 import routes from './routes/applicationRoutes';
 
 // initialize express
@@ -19,6 +20,9 @@ mongoose.connect('mongodb://localhost/MERN_app', {
 // use bodyparser so that our requests can be understood by MongoDB
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
+
+// execute imported cors function
+app.user(cors());
 
 // make our routes available to the application
 routes(app);
