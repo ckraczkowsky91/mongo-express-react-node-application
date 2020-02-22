@@ -14,6 +14,10 @@ mongoose.connect('mongodb://localhost/MERN_app', {
   useUnifiedTopology: true
 });
 
+// use bodyparser so that our requests can be understood by MongoDB
+app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json());
+
 // define routing for the root
 app.get('/', (req, res) =>
   res.send(`Our application is running ${PORT}`)
