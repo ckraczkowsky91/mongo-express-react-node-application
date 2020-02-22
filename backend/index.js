@@ -1,11 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyparser from 'body-parser';
+import routes from './routes/applicationRoutes';
 
 // initialize express
 const app = express();
 // define the port
-const PORT = 3000;
+// we will use port 4000 because frontend is on port 3000 and we want to avoid CORS issues
+const PORT = 4000;
 
 // use Mongoose to connect to MongoDB
 mongoose.Promise = global.Promise;
@@ -17,6 +19,9 @@ mongoose.connect('mongodb://localhost/MERN_app', {
 // use bodyparser so that our requests can be understood by MongoDB
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
+
+// make our routes available to the application
+routes(app);
 
 // define routing for the root
 app.get('/', (req, res) =>
