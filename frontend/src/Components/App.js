@@ -14,8 +14,8 @@ class App extends Component {
       players: [],
       currentPlayer: {}
     };
-// Bind the function to the App class so that it can be used
-//    this.updateCurrentPlayer = this.updateCurrentPlayer.bind(this);
+// Bind the function to the App class so that it has a reference to 'this' i.e. the main App class
+   this.updateCurrentPlayer = this.updateCurrentPlayer.bind(this);
   };
 
 // Use the componentDidMount lifecycle method of React Components
@@ -44,12 +44,16 @@ class App extends Component {
     return(
       <div className='container-fluid'>
         <div className='row'>
-          <div className='col s12'>Menu</div>
+          <nav>
+            <div className='nav-wrapper green darken-2'>
+              <a href='/' className='brand-logo'>Soccer Management</a>
+            </div>
+          </nav>
         </div>
         <div className='row'>
           <div className='col s3'><PlayerList players={this.state.players}
             updateCurrentPlayer={this.updateCurrentPlayer}/></div>
-          <div className='col s9'><PlayerSingle /></div>
+          <div className='col s9'><PlayerSingle player={this.state.currentPlayer}/></div>
         </div>
         <div className='row'>
           <div className='col s12'><PlayerForm /></div>

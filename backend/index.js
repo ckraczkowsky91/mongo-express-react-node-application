@@ -12,7 +12,7 @@ const PORT = 4000;
 
 // use Mongoose to connect to MongoDB
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/MERN_app', {
+mongoose.connect('mongodb+srv://dbUser:dbUserPassword@cluster0-ermq3.mongodb.net/test?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
